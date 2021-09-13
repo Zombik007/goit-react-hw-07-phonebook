@@ -10,7 +10,7 @@ const ContactList = ({ contacts, onDeleteContact, fetchContacts }) => {
 
   useEffect(() => {
     fetchContacts();
-  }, fetchContacts);
+  }, []);
 
   return (
     <ul className={styles.phonebook__list}>
