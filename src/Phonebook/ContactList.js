@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import contactsActions from '../redux/contacts/contacts-actions';
+import contactsOperations from '../redux/contacts/contacts-operations';
 
 import styles from './Phonebook.module.css';
 
-const ContactList = ({ contacts, onDeleteContact }) => {
+const ContactList = ({ contacts, onDeleteContact, fetchContacts }) => {
+  console.log(fetchContacts);
+
+  useEffect(() => {
+    fetchContacts();
+  }, fetchContacts);
+
   return (
     <ul className={styles.phonebook__list}>
       {contacts.map(({ id, name, number }) => {
@@ -40,7 +46,8 @@ const mapStateToProps = ({ contacts: { items, filter } }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onDeleteContact: id => dispatch(contactsActions.deleteContact(id)),
+  onDeleteContact: id => dispatch(contactsOperations.deleteContact(id)),
+  fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
 });
 
 ContactList.propTypes = {
