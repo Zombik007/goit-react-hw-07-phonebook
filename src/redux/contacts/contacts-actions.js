@@ -10,5 +10,3 @@ const deleteContact = createAction('contacts/Delete');
 const filterContact = createAction('contacts/Filter');
 
 export default { addContact, deleteContact, filterContact };
-
-// for commit
