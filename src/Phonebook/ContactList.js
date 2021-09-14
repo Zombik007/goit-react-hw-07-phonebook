@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import contactsOperations from '../redux/contacts/contacts-operations';
+import contactsSelectors from '../redux/contacts/contacts-selectors';
 
 import styles from './Phonebook.module.css';
 
@@ -33,16 +34,8 @@ const ContactList = ({ contacts, onDeleteContact, fetchContacts }) => {
   );
 };
 
-const getFilteredContacts = (allContacts, filter) => {
-  const normalizeFilter = filter.toLowerCase();
-
-  return allContacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizeFilter),
-  );
-};
-
-const mapStateToProps = ({ contacts: { items, filter } }) => ({
-  contacts: getFilteredContacts(items, filter),
+const mapStateToProps = state => ({
+  contacts: contactsSelectors.getFilteredContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({
