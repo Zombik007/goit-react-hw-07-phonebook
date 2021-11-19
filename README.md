@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+Попытка редактировать код на https://vscode.dev/
+
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
 
